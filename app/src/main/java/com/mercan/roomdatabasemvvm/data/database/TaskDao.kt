@@ -19,6 +19,6 @@ interface TaskDao {
     @Delete
     suspend fun delete(task: Task)
 
-    @Query("SELECT * FROM tasks WHERE isCompleted = :isCompleted ORDER BY dueDate ASC")
+    @Query("SELECT * FROM tasks WHERE isCompleted = :isCompleted")
     fun getTasks(isCompleted: Boolean): LiveData<List<Task>>
 }
