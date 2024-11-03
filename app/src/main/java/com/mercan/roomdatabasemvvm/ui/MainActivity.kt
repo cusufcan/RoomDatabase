@@ -1,9 +1,10 @@
-package com.mercan.roomdatabasemvvm
+package com.mercan.roomdatabasemvvm.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.mercan.roomdatabasemvvm.R
 import com.mercan.roomdatabasemvvm.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
