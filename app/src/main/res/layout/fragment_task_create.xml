@@ -8,13 +8,13 @@
     tools:context=".ui.taskcreate.TaskCreateFragment">
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/createTaskTitleTextView"
+        android:id="@+id/taskTitleTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:text="@string/create_new_task"
         android:textAlignment="center"
         android:textAppearance="?attr/textAppearanceHeadlineMedium"
-        app:layout_constraintBottom_toTopOf="@+id/inputLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,10 +23,10 @@
         android:id="@+id/inputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/taskTitleTextView">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/taskTitleTextInputLayout"
@@ -37,20 +37,25 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/taskTitleTextInputField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/task_title" />
+                android:hint="@string/task_title"
+                android:maxLines="1"
+                android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/taskDescriptionTextInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/taskTitleTextInputLayout">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/taskDescriptionTextInputField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/task_description" />
@@ -58,6 +63,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/saveTaskButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
