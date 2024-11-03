@@ -1,9 +1,11 @@
 package com.mercan.roomdatabasemvvm.ui.taskcreate
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -26,6 +28,7 @@ class TaskCreateFragment : Fragment() {
         _binding = FragmentTaskCreateBinding.inflate(inflater, container, false)
 
         checkFields()
+        setAutoFocus()
 
         binding.saveTaskButton.setOnClickListener {
             val title = binding.taskTitleTextInputField.text.toString()
@@ -42,6 +45,19 @@ class TaskCreateFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    private fun setAutoFocus() {
+        binding.taskTitleTextInputField.requestFocus()
+        binding.taskTitleTextInputField.postDelayed({
+            showKeyboard()
+        }, 100)
+    }
+
+    private fun showKeyboard() {
+        val imm = requireContext()
+            .getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.showSoftInput(binding.taskTitleTextInputField, InputMethodManager.SHOW_IMPLICIT)
     }
 
     private fun checkFields() {
