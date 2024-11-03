@@ -12,7 +12,6 @@ android {
     defaultConfig {
         applicationId = "com.mercan.roomdatabasemvvm"
         minSdk = 28
-        //noinspection OldTargetApi
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -54,6 +53,7 @@ dependencies {
     // Room
     implementation(libs.androidx.room.runtime)
     annotationProcessor(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
 
     // ViewModel
@@ -65,5 +65,4 @@ dependencies {
     // Navigation
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.androidx.navigation.ui)
-
 }
