@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">RoomDatabaseMVVM</string>
+
+    <!-- General -->
+    <string name="save">Save</string>
+    <string name="update">Update</string>
+    <string name="field_empty_error">This field cannot be empty</string>
+
+    <!-- TaskListFragment -->
+    <string name="create_task">Create Task</string>
+
+    <!-- TaskCreateFragment -->
+    <string name="create_new_task">Create New Task</string>
+    <string name="task_title">Task Title</string>
+    <string name="task_description">Task Description</string>
 </resources>
