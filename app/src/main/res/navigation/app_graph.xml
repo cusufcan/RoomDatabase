@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/app_graph">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_graph"
+    app:startDestination="@id/taskListFragment">
 
+    <fragment
+        android:id="@+id/taskListFragment"
+        android:name="com.mercan.roomdatabasemvvm.ui.tasklist.TaskListFragment"
+        android:label="fragment_task_list"
+        tools:layout="@layout/fragment_task_list">
+        <action
+            android:id="@+id/action_taskListFragment_to_taskCreateFragment"
+            app:destination="@id/taskCreateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/taskCreateFragment"
+        android:name="com.mercan.roomdatabasemvvm.ui.taskcreate.TaskCreateFragment"
+        android:label="fragment_task_create"
+        tools:layout="@layout/fragment_task_create" />
 </navigation>
