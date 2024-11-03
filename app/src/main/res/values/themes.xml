@@ -1,6 +1,6 @@
 <resources>
 
-    <style name="Base.Theme.RoomDatabaseMVVM" parent="Theme.Material3.DayNight.NoActionBar" />
+    <style name="Base.Theme.RoomDatabaseMVVM" parent="Theme.Material3.Light.NoActionBar" />
 
     <style name="Theme.RoomDatabaseMVVM" parent="Base.Theme.RoomDatabaseMVVM">
         <item name="android:fontFamily">@font/montserrat</item>
