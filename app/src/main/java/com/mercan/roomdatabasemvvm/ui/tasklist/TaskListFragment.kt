@@ -28,7 +28,7 @@ class TaskListFragment : Fragment() {
 
         binding.taskRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        taskViewModel.allTasks.observe(viewLifecycleOwner) { tasks ->
+        taskViewModel.uncompletedTasks.observe(viewLifecycleOwner) { tasks ->
             taskListAdapter = TaskListAdapter(tasks) { task ->
                 taskViewModel.update(task)
             }
