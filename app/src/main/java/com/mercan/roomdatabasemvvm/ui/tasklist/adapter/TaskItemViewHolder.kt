@@ -14,8 +14,8 @@ class TaskItemViewHolder(
         binding.title.text = task.title
         binding.checkbox.isChecked = task.isCompleted
         binding.checkbox.setOnCheckedChangeListener { _, isChecked ->
-            val updatedTask = task.copy(isCompleted = isChecked)
-            onCheck(updatedTask)
+            task.isCompleted = isChecked
+            onCheck(task)
         }
     }
 }

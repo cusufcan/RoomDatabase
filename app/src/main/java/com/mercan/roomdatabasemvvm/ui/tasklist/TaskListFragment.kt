@@ -27,10 +27,6 @@ class TaskListFragment : Fragment() {
         _binding = FragmentTaskListBinding.inflate(inflater, container, false)
 
         binding.taskRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        taskListAdapter = TaskListAdapter(emptyList()) { task ->
-            taskViewModel.update(task)
-        }
-        binding.taskRecyclerView.adapter = taskListAdapter
 
         taskViewModel.allTasks.observe(viewLifecycleOwner) { tasks ->
             taskListAdapter = TaskListAdapter(tasks) { task ->
