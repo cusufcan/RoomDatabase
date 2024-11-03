@@ -2,5 +2,8 @@
 
     <style name="Base.Theme.RoomDatabaseMVVM" parent="Theme.Material3.DayNight" />
 
-    <style name="Theme.RoomDatabaseMVVM" parent="Base.Theme.RoomDatabaseMVVM" />
+    <style name="Theme.RoomDatabaseMVVM" parent="Base.Theme.RoomDatabaseMVVM">
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="fontFamily">@font/montserrat</item>
+    </style>
 </resources>
