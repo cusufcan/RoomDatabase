@@ -9,7 +9,7 @@
         android:id="@+id/taskListFragment"
         android:name="com.mercan.roomdatabasemvvm.ui.taskuncompletedlist.TaskUncompletedListFragment"
         android:label="fragment_task_list"
-        tools:layout="@layout/fragment_task_list">
+        tools:layout="@layout/fragment_task_uncompleted_list">
         <action
             android:id="@+id/action_taskListFragment_to_taskCreateFragment"
             app:destination="@id/taskCreateFragment" />
