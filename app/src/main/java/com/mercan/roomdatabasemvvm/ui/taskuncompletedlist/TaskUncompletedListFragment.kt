@@ -26,13 +26,13 @@ class TaskUncompletedListFragment : Fragment() {
     ): View {
         _binding = FragmentTaskUncompletedListBinding.inflate(inflater, container, false)
 
-        binding.taskRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.taskUncompletedRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         taskViewModel.uncompletedTasks.observe(viewLifecycleOwner) { tasks ->
             taskUncompletedListAdapter = TaskUncompletedListAdapter(tasks) { task ->
                 taskViewModel.update(task)
             }
-            binding.taskRecyclerView.adapter = taskUncompletedListAdapter
+            binding.taskUncompletedRecyclerView.adapter = taskUncompletedListAdapter
         }
 
         binding.createTaskFloatingActionButton.setOnClickListener {
