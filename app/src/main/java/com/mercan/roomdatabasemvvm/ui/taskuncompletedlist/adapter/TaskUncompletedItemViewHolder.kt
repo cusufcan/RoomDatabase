@@ -4,7 +4,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mercan.roomdatabasemvvm.data.model.Task
 import com.mercan.roomdatabasemvvm.databinding.TaskItemBinding
 
-class TaskItemViewHolder(
+class TaskUncompletedItemViewHolder(
     private val binding: TaskItemBinding,
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(

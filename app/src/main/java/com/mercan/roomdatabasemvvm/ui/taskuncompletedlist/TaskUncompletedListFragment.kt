@@ -9,30 +9,30 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mercan.roomdatabasemvvm.R
-import com.mercan.roomdatabasemvvm.databinding.FragmentTaskListBinding
-import com.mercan.roomdatabasemvvm.ui.taskuncompletedlist.adapter.TaskListAdapter
+import com.mercan.roomdatabasemvvm.databinding.FragmentTaskUncompletedListBinding
+import com.mercan.roomdatabasemvvm.ui.taskuncompletedlist.adapter.TaskUncompletedListAdapter
 import com.mercan.roomdatabasemvvm.viewmodel.TaskViewModel
 
 class TaskUncompletedListFragment : Fragment() {
-    private var _binding: FragmentTaskListBinding? = null
+    private var _binding: FragmentTaskUncompletedListBinding? = null
     private val binding get() = _binding!!
 
     private val taskViewModel: TaskViewModel by viewModels()
-    private lateinit var taskListAdapter: TaskListAdapter
+    private lateinit var taskUncompletedListAdapter: TaskUncompletedListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentTaskListBinding.inflate(inflater, container, false)
+        _binding = FragmentTaskUncompletedListBinding.inflate(inflater, container, false)
 
         binding.taskRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         taskViewModel.uncompletedTasks.observe(viewLifecycleOwner) { tasks ->
-            taskListAdapter = TaskListAdapter(tasks) { task ->
+            taskUncompletedListAdapter = TaskUncompletedListAdapter(tasks) { task ->
                 taskViewModel.update(task)
             }
-            binding.taskRecyclerView.adapter = taskListAdapter
+            binding.taskRecyclerView.adapter = taskUncompletedListAdapter
         }
 
         binding.createTaskFloatingActionButton.setOnClickListener {

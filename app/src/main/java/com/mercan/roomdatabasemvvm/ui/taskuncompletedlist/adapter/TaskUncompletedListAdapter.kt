@@ -6,21 +6,24 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mercan.roomdatabasemvvm.data.model.Task
 import com.mercan.roomdatabasemvvm.databinding.TaskItemBinding
 
-class TaskListAdapter(
+class TaskUncompletedListAdapter(
     private val tasks: List<Task>,
     private val onCheck: (task: Task) -> Unit,
-) : RecyclerView.Adapter<TaskItemViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskItemViewHolder {
+) : RecyclerView.Adapter<TaskUncompletedItemViewHolder>() {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): TaskUncompletedItemViewHolder {
         val binding = TaskItemBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false,
         )
 
-        return TaskItemViewHolder(binding)
+        return TaskUncompletedItemViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: TaskItemViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: TaskUncompletedItemViewHolder, position: Int) {
         holder.bind(tasks[position], onCheck)
     }
 
