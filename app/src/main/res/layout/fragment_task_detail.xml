@@ -8,7 +8,7 @@
     tools:context=".ui.taskdetail.TaskDetailFragment">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/title"
+        android:id="@+id/titleTextLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/task_title"
@@ -17,21 +17,23 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/titleTextInput"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/description"
+        android:id="@+id/descriptionTextLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:hint="@string/task_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title">
+        app:layout_constraintTop_toBottomOf="@id/titleTextLayout">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/descriptionTextInput"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -44,7 +46,7 @@
         app:cardCornerRadius="4dp"
         app:layout_constraintEnd_toStartOf="@+id/updateButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/description">
+        app:layout_constraintTop_toBottomOf="@id/descriptionTextLayout">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/isCompletedLayout"
@@ -59,12 +61,12 @@
                 android:text="Status:"
                 android:textAppearance="?attr/textAppearanceTitleMedium"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/isCompleted"
+                app:layout_constraintEnd_toStartOf="@id/isCompletedCheckbox"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.checkbox.MaterialCheckBox
-                android:id="@+id/isCompleted"
+                android:id="@+id/isCompletedCheckbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"

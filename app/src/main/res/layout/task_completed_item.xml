@@ -20,7 +20,7 @@
             android:padding="12dp">
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/title"
+                android:id="@+id/titleTextLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
