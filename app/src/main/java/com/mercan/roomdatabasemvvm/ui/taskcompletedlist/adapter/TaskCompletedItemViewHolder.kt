@@ -8,7 +8,7 @@ class TaskCompletedItemViewHolder(
     private val binding: TaskCompletedItemBinding
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(task: Task, onDeleteClicked: (task: Task) -> Unit) {
-        binding.title.text = task.title
+        binding.titleTextView.text = task.title
         binding.deleteButton.setOnClickListener {
             onDeleteClicked(task)
         }

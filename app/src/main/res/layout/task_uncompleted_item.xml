@@ -21,7 +21,7 @@
             android:paddingVertical="4dp">
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/titleTextLayout"
+                android:id="@+id/titleTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
