@@ -4,6 +4,7 @@
     <!-- General -->
     <string name="save">Save</string>
     <string name="update">Update</string>
+    <string name="delete">Delete</string>
     <string name="field_empty_error">This field cannot be empty</string>
 
     <!-- TaskUncompletedListFragment -->
