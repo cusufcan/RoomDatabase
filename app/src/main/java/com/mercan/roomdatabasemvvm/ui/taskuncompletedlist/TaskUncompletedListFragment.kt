@@ -6,9 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.mercan.roomdatabasemvvm.R
 import com.mercan.roomdatabasemvvm.databinding.FragmentTaskUncompletedListBinding
 import com.mercan.roomdatabasemvvm.ui.taskuncompletedlist.adapter.TaskUncompletedListAdapter
 import com.mercan.roomdatabasemvvm.viewmodel.TaskViewModel
@@ -33,10 +31,6 @@ class TaskUncompletedListFragment : Fragment() {
                 taskViewModel.update(task)
             }
             binding.taskUncompletedRecyclerView.adapter = taskUncompletedListAdapter
-        }
-
-        binding.createTaskFloatingActionButton.setOnClickListener {
-            findNavController().navigate(R.id.action_taskListFragment_to_taskCreateFragment)
         }
 
         return binding.root

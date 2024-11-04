@@ -2,10 +2,10 @@ package com.mercan.roomdatabasemvvm.ui.taskuncompletedlist.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import com.mercan.roomdatabasemvvm.data.model.Task
-import com.mercan.roomdatabasemvvm.databinding.TaskItemBinding
+import com.mercan.roomdatabasemvvm.databinding.TaskUncompletedItemBinding
 
 class TaskUncompletedItemViewHolder(
-    private val binding: TaskItemBinding,
+    private val binding: TaskUncompletedItemBinding,
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(
         task: Task,

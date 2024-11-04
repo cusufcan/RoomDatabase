@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mercan.roomdatabasemvvm.data.model.Task
-import com.mercan.roomdatabasemvvm.databinding.TaskItemBinding
+import com.mercan.roomdatabasemvvm.databinding.TaskUncompletedItemBinding
 
 class TaskUncompletedListAdapter(
     private val tasks: List<Task>,
@@ -14,7 +14,7 @@ class TaskUncompletedListAdapter(
         parent: ViewGroup,
         viewType: Int
     ): TaskUncompletedItemViewHolder {
-        val binding = TaskItemBinding.inflate(
+        val binding = TaskUncompletedItemBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false,
