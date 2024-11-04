@@ -1,4 +1,4 @@
-package com.mercan.roomdatabasemvvm.ui.tasklist.adapter
+package com.mercan.roomdatabasemvvm.ui.taskuncompletedlist.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import com.mercan.roomdatabasemvvm.data.model.Task

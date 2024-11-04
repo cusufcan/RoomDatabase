@@ -1,4 +1,4 @@
-package com.mercan.roomdatabasemvvm.ui.tasklist
+package com.mercan.roomdatabasemvvm.ui.taskuncompletedlist
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mercan.roomdatabasemvvm.R
 import com.mercan.roomdatabasemvvm.databinding.FragmentTaskListBinding
-import com.mercan.roomdatabasemvvm.ui.tasklist.adapter.TaskListAdapter
+import com.mercan.roomdatabasemvvm.ui.taskuncompletedlist.adapter.TaskListAdapter
 import com.mercan.roomdatabasemvvm.viewmodel.TaskViewModel
 
 class TaskListFragment : Fragment() {

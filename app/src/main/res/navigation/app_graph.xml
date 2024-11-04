@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/taskListFragment"
-        android:name="com.mercan.roomdatabasemvvm.ui.tasklist.TaskListFragment"
+        android:name="com.mercan.roomdatabasemvvm.ui.taskuncompletedlist.TaskListFragment"
         android:label="fragment_task_list"
         tools:layout="@layout/fragment_task_list">
         <action

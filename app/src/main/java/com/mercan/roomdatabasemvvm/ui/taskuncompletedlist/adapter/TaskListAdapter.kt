@@ -1,4 +1,4 @@
-package com.mercan.roomdatabasemvvm.ui.tasklist.adapter
+package com.mercan.roomdatabasemvvm.ui.taskuncompletedlist.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
