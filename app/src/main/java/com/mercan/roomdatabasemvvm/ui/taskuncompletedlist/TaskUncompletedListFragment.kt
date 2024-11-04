@@ -13,7 +13,7 @@ import com.mercan.roomdatabasemvvm.databinding.FragmentTaskListBinding
 import com.mercan.roomdatabasemvvm.ui.taskuncompletedlist.adapter.TaskListAdapter
 import com.mercan.roomdatabasemvvm.viewmodel.TaskViewModel
 
-class TaskListFragment : Fragment() {
+class TaskUncompletedListFragment : Fragment() {
     private var _binding: FragmentTaskListBinding? = null
     private val binding get() = _binding!!
 
