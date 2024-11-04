@@ -6,13 +6,16 @@
     <string name="update">Update</string>
     <string name="field_empty_error">This field cannot be empty</string>
 
-    <!-- TaskListFragment -->
+    <!-- TaskUncompletedListFragment -->
+    <string name="uncompleted_tasks">Uncompleted Tasks</string>
     <string name="create_task">Create Task</string>
+
+    <!-- TaskCompletedListFragment -->
+    <string name="completed_tasks">Completed Tasks</string>
+    <string name="delete_task">Delete Task</string>
 
     <!-- TaskCreateFragment -->
     <string name="create_new_task">Create New Task</string>
     <string name="task_title">Task Title</string>
     <string name="task_description">Task Description</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

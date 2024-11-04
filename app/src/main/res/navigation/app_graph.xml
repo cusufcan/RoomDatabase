@@ -3,20 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_graph"
-    app:startDestination="@id/taskListFragment">
+    app:startDestination="@id/tabLayoutFragment">
 
-    <fragment
-        android:id="@+id/taskListFragment"
-        android:name="com.mercan.roomdatabasemvvm.ui.taskuncompletedlist.TaskUncompletedListFragment"
-        android:label="fragment_task_list"
-        tools:layout="@layout/fragment_task_uncompleted_list">
-        <action
-            android:id="@+id/action_taskListFragment_to_taskCreateFragment"
-            app:destination="@id/taskCreateFragment" />
-    </fragment>
     <fragment
         android:id="@+id/taskCreateFragment"
         android:name="com.mercan.roomdatabasemvvm.ui.taskcreate.TaskCreateFragment"
         android:label="fragment_task_create"
         tools:layout="@layout/fragment_task_create" />
+    <fragment
+        android:id="@+id/tabLayoutFragment"
+        android:name="com.mercan.roomdatabasemvvm.ui.tablayout.TabLayoutFragment"
+        android:label="fragment_tab_layout"
+        tools:layout="@layout/fragment_tab_layout">
+        <action
+            android:id="@+id/action_tabLayoutFragment_to_taskCreateFragment"
+            app:destination="@id/taskCreateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/taskCompletedListFragment"
+        android:name="com.mercan.roomdatabasemvvm.ui.taskcompletedlist.TaskCompletedListFragment"
+        android:label="fragment_task_completed_list"
+        tools:layout="@layout/fragment_task_completed_list" />
+    <fragment
+        android:id="@+id/taskUncompletedListFragment"
+        android:name="com.mercan.roomdatabasemvvm.ui.taskuncompletedlist.TaskUncompletedListFragment"
+        android:label="fragment_task_uncompleted_list"
+        tools:layout="@layout/fragment_task_uncompleted_list" />
 </navigation>
