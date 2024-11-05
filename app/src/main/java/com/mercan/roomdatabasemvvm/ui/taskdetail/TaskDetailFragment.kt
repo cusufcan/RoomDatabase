@@ -50,6 +50,10 @@ class TaskDetailFragment : Fragment() {
             }
         }
 
+        binding.descriptionTextInput.addTextChangedListener {
+            description = it.toString().trim()
+        }
+
         binding.isCompletedCheckbox.setOnCheckedChangeListener { _, isChecked ->
             isCompleted = isChecked
         }
