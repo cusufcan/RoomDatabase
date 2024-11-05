@@ -110,14 +110,19 @@ class TaskDetailFragment : Fragment() {
             pickDate(requireActivity()) {
                 date = it
                 binding.datePickerTextView.text = it
+                pickTimeManuel()
             }
         }
 
         binding.timePickerCardView.setOnClickListener {
-            pickTime(requireActivity()) {
-                time = it
-                binding.timePickerTextView.text = it
-            }
+            pickTimeManuel()
+        }
+    }
+
+    private fun pickTimeManuel() {
+        pickTime(requireActivity()) {
+            time = it
+            binding.timePickerTextView.text = it
         }
     }
 }

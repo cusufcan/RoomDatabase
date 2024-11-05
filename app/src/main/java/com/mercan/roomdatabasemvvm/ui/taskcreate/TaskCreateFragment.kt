@@ -41,6 +41,9 @@ class TaskCreateFragment : Fragment() {
         binding.datePickerCardView.setOnClickListener {
             pickDate(requireActivity()) {
                 binding.datePickerTextView.text = it
+                pickTime(requireActivity()) { time ->
+                    binding.timePickerTextView.text = time
+                }
             }
         }
 
@@ -111,7 +114,6 @@ class TaskCreateFragment : Fragment() {
 
         popBack()
     }
-
 
     private fun popBack() {
         findNavController().popBackStack()
