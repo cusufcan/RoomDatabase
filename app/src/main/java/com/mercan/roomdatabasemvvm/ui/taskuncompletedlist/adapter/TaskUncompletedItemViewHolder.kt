@@ -1,5 +1,6 @@
 package com.mercan.roomdatabasemvvm.ui.taskuncompletedlist.adapter
 
+import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.mercan.roomdatabasemvvm.data.model.Task
 import com.mercan.roomdatabasemvvm.databinding.TaskUncompletedItemBinding
@@ -17,6 +18,13 @@ class TaskUncompletedItemViewHolder(
         binding.checkbox.setOnCheckedChangeListener { _, isChecked ->
             task.isCompleted = isChecked
             onCheck(task)
+        }
+
+        if (task.description.isNullOrEmpty()) {
+            binding.descriptionTextView.text = ""
+        } else {
+            binding.descriptionTextView.text = task.description
+            binding.descriptionTextView.visibility = View.VISIBLE
         }
 
         binding.root.setOnClickListener {
