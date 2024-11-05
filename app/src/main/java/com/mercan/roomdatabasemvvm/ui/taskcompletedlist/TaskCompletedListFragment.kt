@@ -30,7 +30,9 @@ class TaskCompletedListFragment : Fragment() {
         binding.taskCompletedRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         taskViewModel.completedTasks.observe(viewLifecycleOwner) { tasks ->
-            taskCompletedListAdapter = TaskCompletedListAdapter(tasks, ::onDeleteClick, ::onClick)
+            taskCompletedListAdapter = TaskCompletedListAdapter(
+                requireContext(), tasks, ::onDeleteClick, ::onClick
+            )
             binding.taskCompletedRecyclerView.adapter = taskCompletedListAdapter
         }
 

@@ -86,9 +86,10 @@ class TaskDetailFragment : Fragment() {
                 it.description = description
                 it.isCompleted = isCompleted
                 it.deadLine = "$date $time"
+                it.completeTime = if (isCompleted) it.completeTime else null
                 viewModel.update(it)
             }
-
+            
             findNavController().popBackStack()
         }
 

@@ -4,6 +4,9 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.mercan.roomdatabasemvvm.data.model.Task
 import com.mercan.roomdatabasemvvm.databinding.TaskUncompletedItemBinding
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 class TaskUncompletedItemViewHolder(
     private val binding: TaskUncompletedItemBinding,
@@ -17,6 +20,14 @@ class TaskUncompletedItemViewHolder(
         binding.checkbox.isChecked = task.isCompleted
         binding.checkbox.setOnCheckedChangeListener { _, isChecked ->
             task.isCompleted = isChecked
+
+            if (isChecked) {
+                val initialDate = Calendar.getInstance()
+                val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                val completeDate = formatter.format(initialDate.time)
+                task.completeTime = completeDate
+            }
+            
             onCheck(task)
         }
 

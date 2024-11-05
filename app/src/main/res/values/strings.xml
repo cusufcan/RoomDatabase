@@ -15,6 +15,7 @@
     <!-- TaskCompletedListFragment -->
     <string name="completed_tasks">Completed Tasks</string>
     <string name="delete_task">Delete Task</string>
+    <string name="completed_on">Completed on %1$s</string>
 
     <!-- TaskCreateFragment -->
     <string name="create_new_task">Create New Task</string>

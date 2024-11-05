@@ -7,7 +7,9 @@ import androidx.room.PrimaryKey
 data class Task(
     var title: String,
     var description: String?,
+    var deadLine: String?,
     var isCompleted: Boolean = false,
+    var completeTime: String? = null,
 ) {
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0
