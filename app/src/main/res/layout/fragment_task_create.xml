@@ -40,6 +40,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/task_title"
+                android:maxLength="100"
                 android:maxLines="1"
                 android:singleLine="true" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -57,7 +58,8 @@
                 android:id="@+id/taskDescriptionTextInputField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/task_description" />
+                android:hint="@string/task_description"
+                android:maxLength="1000" />
         </com.google.android.material.textfield.TextInputLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -19,7 +19,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/titleTextInput"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:maxLength="100" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -35,7 +36,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/descriptionTextInput"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:maxLength="1000" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.card.MaterialCardView
