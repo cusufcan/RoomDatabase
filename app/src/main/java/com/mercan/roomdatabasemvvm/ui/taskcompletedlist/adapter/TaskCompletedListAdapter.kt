@@ -8,7 +8,8 @@ import com.mercan.roomdatabasemvvm.databinding.TaskCompletedItemBinding
 
 class TaskCompletedListAdapter(
     private val completedTaskList: List<Task>,
-    private val onDeleteClicked: (Task) -> Unit
+    private val onDeleteClicked: (task: Task) -> Unit,
+    private val onClick: (id: Int) -> Unit,
 ) : RecyclerView.Adapter<TaskCompletedItemViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskCompletedItemViewHolder {
         val binding = TaskCompletedItemBinding.inflate(
@@ -25,8 +26,6 @@ class TaskCompletedListAdapter(
     override fun onBindViewHolder(holder: TaskCompletedItemViewHolder, position: Int) {
         val task = completedTaskList[position]
 
-        holder.bind(task) {
-            onDeleteClicked(it)
-        }
+        holder.bind(task, onDeleteClicked, onClick)
     }
 }

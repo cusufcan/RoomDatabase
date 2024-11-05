@@ -6,8 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.mercan.roomdatabasemvvm.data.model.Task
 import com.mercan.roomdatabasemvvm.databinding.FragmentTaskCompletedListBinding
+import com.mercan.roomdatabasemvvm.ui.tablayout.TabLayoutFragmentDirections
 import com.mercan.roomdatabasemvvm.ui.taskcompletedlist.adapter.TaskCompletedListAdapter
 import com.mercan.roomdatabasemvvm.viewmodel.TaskViewModel
 
@@ -27,12 +30,26 @@ class TaskCompletedListFragment : Fragment() {
         binding.taskCompletedRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         taskViewModel.completedTasks.observe(viewLifecycleOwner) { tasks ->
-            taskCompletedListAdapter = TaskCompletedListAdapter(tasks) { task ->
-                taskViewModel.delete(task)
-            }
+            taskCompletedListAdapter = TaskCompletedListAdapter(tasks, ::onDeleteClick, ::onClick)
             binding.taskCompletedRecyclerView.adapter = taskCompletedListAdapter
         }
 
         return binding.root
+    }
+
+    private fun onDeleteClick(task: Task) {
+        taskViewModel.delete(task)
+    }
+
+    private fun onClick(id: Int) {
+        val dir = TabLayoutFragmentDirections
+            .actionTabLayoutFragmentToTaskDetailFragment()
+        dir.id = id
+        findNavController().navigate(dir)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

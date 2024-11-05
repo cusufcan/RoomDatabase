@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_tabLayoutFragment_to_taskCreateFragment"
             app:destination="@id/taskCreateFragment" />
+        <action
+            android:id="@+id/action_tabLayoutFragment_to_taskDetailFragment"
+            app:destination="@id/taskDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/taskCompletedListFragment"
@@ -29,4 +32,14 @@
         android:name="com.mercan.roomdatabasemvvm.ui.taskuncompletedlist.TaskUncompletedListFragment"
         android:label="fragment_task_uncompleted_list"
         tools:layout="@layout/fragment_task_uncompleted_list" />
+    <fragment
+        android:id="@+id/taskDetailFragment"
+        android:name="com.mercan.roomdatabasemvvm.ui.taskdetail.TaskDetailFragment"
+        android:label="fragment_task_detail"
+        tools:layout="@layout/fragment_task_detail">
+        <argument
+            android:name="id"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
 </navigation>

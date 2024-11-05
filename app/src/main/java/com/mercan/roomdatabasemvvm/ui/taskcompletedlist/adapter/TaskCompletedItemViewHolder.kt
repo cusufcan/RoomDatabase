@@ -7,10 +7,18 @@ import com.mercan.roomdatabasemvvm.databinding.TaskCompletedItemBinding
 class TaskCompletedItemViewHolder(
     private val binding: TaskCompletedItemBinding
 ) : RecyclerView.ViewHolder(binding.root) {
-    fun bind(task: Task, onDeleteClicked: (task: Task) -> Unit) {
+    fun bind(
+        task: Task,
+        onDeleteClicked: (task: Task) -> Unit,
+        onClick: (id: Int) -> Unit
+    ) {
         binding.titleTextView.text = task.title
         binding.deleteButton.setOnClickListener {
             onDeleteClicked(task)
+        }
+
+        binding.root.setOnClickListener {
+            onClick(task.id)
         }
     }
 }

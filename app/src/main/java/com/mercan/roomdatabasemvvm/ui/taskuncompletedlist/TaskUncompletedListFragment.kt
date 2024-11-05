@@ -6,8 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.mercan.roomdatabasemvvm.data.model.Task
 import com.mercan.roomdatabasemvvm.databinding.FragmentTaskUncompletedListBinding
+import com.mercan.roomdatabasemvvm.ui.tablayout.TabLayoutFragmentDirections
 import com.mercan.roomdatabasemvvm.ui.taskuncompletedlist.adapter.TaskUncompletedListAdapter
 import com.mercan.roomdatabasemvvm.viewmodel.TaskViewModel
 
@@ -27,13 +30,26 @@ class TaskUncompletedListFragment : Fragment() {
         binding.taskUncompletedRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         taskViewModel.uncompletedTasks.observe(viewLifecycleOwner) { tasks ->
-            taskUncompletedListAdapter = TaskUncompletedListAdapter(tasks) { task ->
-                taskViewModel.update(task)
-            }
+            taskUncompletedListAdapter = TaskUncompletedListAdapter(
+                tasks,
+                ::onCheckClick,
+                ::onClick,
+            )
             binding.taskUncompletedRecyclerView.adapter = taskUncompletedListAdapter
         }
 
         return binding.root
+    }
+
+    private fun onCheckClick(task: Task) {
+        taskViewModel.update(task)
+    }
+
+    private fun onClick(id: Int) {
+        val dir = TabLayoutFragmentDirections
+            .actionTabLayoutFragmentToTaskDetailFragment()
+        dir.id = id
+        findNavController().navigate(dir)
     }
 
     override fun onDestroyView() {

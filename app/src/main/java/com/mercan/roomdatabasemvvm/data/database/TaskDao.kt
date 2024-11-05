@@ -21,4 +21,7 @@ interface TaskDao {
 
     @Query("SELECT * FROM tasks WHERE isCompleted = :isCompleted")
     fun getTasks(isCompleted: Boolean): LiveData<List<Task>>
+
+    @Query("SELECT * FROM tasks WHERE id = :taskId")
+    suspend fun getTaskById(taskId: Int): Task
 }

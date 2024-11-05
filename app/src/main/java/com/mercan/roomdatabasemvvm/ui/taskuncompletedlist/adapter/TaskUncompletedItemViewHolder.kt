@@ -10,12 +10,17 @@ class TaskUncompletedItemViewHolder(
     fun bind(
         task: Task,
         onCheck: (task: Task) -> Unit,
+        onClick: (id: Int) -> Unit,
     ) {
         binding.titleTextView.text = task.title
         binding.checkbox.isChecked = task.isCompleted
         binding.checkbox.setOnCheckedChangeListener { _, isChecked ->
             task.isCompleted = isChecked
             onCheck(task)
+        }
+
+        binding.root.setOnClickListener {
+            onClick(task.id)
         }
     }
 }
