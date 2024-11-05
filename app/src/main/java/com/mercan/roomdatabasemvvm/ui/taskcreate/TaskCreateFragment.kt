@@ -13,6 +13,10 @@ import androidx.navigation.fragment.findNavController
 import com.mercan.roomdatabasemvvm.R
 import com.mercan.roomdatabasemvvm.data.model.Task
 import com.mercan.roomdatabasemvvm.databinding.FragmentTaskCreateBinding
+import com.mercan.roomdatabasemvvm.utils.getInitialDate
+import com.mercan.roomdatabasemvvm.utils.getInitialTime
+import com.mercan.roomdatabasemvvm.utils.pickDate
+import com.mercan.roomdatabasemvvm.utils.pickTime
 import com.mercan.roomdatabasemvvm.viewmodel.TaskViewModel
 
 class TaskCreateFragment : Fragment() {
@@ -30,21 +34,28 @@ class TaskCreateFragment : Fragment() {
         checkFields()
         setAutoFocus()
 
-        binding.saveTaskButton.setOnClickListener {
-            val title = binding.taskTitleTextInputField.text.toString()
-            val description = binding.taskDescriptionTextInputField.text.toString()
+        setInitialDateTime()
 
-            if (title.isEmpty()) {
-                binding.taskTitleTextInputLayout.error = getString(R.string.field_empty_error)
-                return@setOnClickListener
+        binding.saveTaskButton.setOnClickListener(::saveTask)
+
+        binding.datePickerCardView.setOnClickListener {
+            pickDate(requireActivity()) {
+                binding.datePickerTextView.text = it
             }
+        }
 
-            taskViewModel.insert(Task(title, description))
-
-            popBack()
+        binding.timePickerCardView.setOnClickListener {
+            pickTime(requireActivity()) {
+                binding.timePickerTextView.text = it
+            }
         }
 
         return binding.root
+    }
+
+    private fun setInitialDateTime() {
+        binding.datePickerTextView.text = getInitialDate()
+        binding.timePickerTextView.text = getInitialTime()
     }
 
     private fun setAutoFocus() {
@@ -69,6 +80,25 @@ class TaskCreateFragment : Fragment() {
             }
         }
     }
+
+    private fun saveTask(view: View) {
+        val title = binding.taskTitleTextInputField.text.toString()
+        val description = binding.taskDescriptionTextInputField.text.toString()
+
+        val date = binding.datePickerTextView.text.toString()
+        val time = binding.timePickerTextView.text.toString()
+        val deadLine = "$date $time"
+
+        if (title.isEmpty()) {
+            binding.taskTitleTextInputLayout.error = getString(R.string.field_empty_error)
+            return
+        }
+
+        taskViewModel.insert(Task(title, description, deadLine = deadLine))
+
+        popBack()
+    }
+
 
     private fun popBack() {
         findNavController().popBackStack()

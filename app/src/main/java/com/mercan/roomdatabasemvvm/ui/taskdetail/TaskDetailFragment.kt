@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.mercan.roomdatabasemvvm.databinding.FragmentTaskDetailBinding
+import com.mercan.roomdatabasemvvm.utils.pickDate
+import com.mercan.roomdatabasemvvm.utils.pickTime
 import com.mercan.roomdatabasemvvm.viewmodel.TaskViewModel
 
 class TaskDetailFragment : Fragment() {
@@ -20,6 +22,8 @@ class TaskDetailFragment : Fragment() {
     private var title = ""
     private var description = ""
     private var isCompleted = false
+    private var date = ""
+    private var time = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -34,13 +38,26 @@ class TaskDetailFragment : Fragment() {
                 title = it.title
                 description = it.description ?: ""
                 isCompleted = it.isCompleted
+                date = it.deadLine?.split(" ")?.get(0) ?: ""
+                time = it.deadLine?.split(" ")?.get(1) ?: ""
 
                 binding.titleTextInput.setText(title)
                 binding.descriptionTextInput.setText(description)
                 binding.isCompletedCheckbox.isChecked = isCompleted
+                binding.datePickerTextView.text = date
+                binding.timePickerTextView.text = time
             }
         }
 
+        setTextChangedListeners()
+        setCheckedChangeListeners()
+        setButtonOnClicks()
+        setDateTimePickerOnClicks()
+
+        return binding.root
+    }
+
+    private fun setTextChangedListeners() {
         binding.titleTextInput.addTextChangedListener {
             if (it.toString().trim().isEmpty()) {
                 binding.titleTextInput.error = "Please enter a title"
@@ -53,17 +70,22 @@ class TaskDetailFragment : Fragment() {
         binding.descriptionTextInput.addTextChangedListener {
             description = it.toString().trim()
         }
+    }
 
+    private fun setCheckedChangeListeners() {
         binding.isCompletedCheckbox.setOnCheckedChangeListener { _, isChecked ->
             isCompleted = isChecked
         }
+    }
 
+    private fun setButtonOnClicks() {
         binding.updateButton.setOnClickListener {
             val task = viewModel.task.value
             task?.let {
                 it.title = title
                 it.description = description
                 it.isCompleted = isCompleted
+                it.deadLine = "$date $time"
                 viewModel.update(it)
             }
 
@@ -74,7 +96,21 @@ class TaskDetailFragment : Fragment() {
             viewModel.delete(viewModel.task.value!!)
             findNavController().popBackStack()
         }
+    }
 
-        return binding.root
+    private fun setDateTimePickerOnClicks() {
+        binding.datePickerCardView.setOnClickListener {
+            pickDate(requireActivity()) {
+                date = it
+                binding.datePickerTextView.text = it
+            }
+        }
+
+        binding.timePickerCardView.setOnClickListener {
+            pickTime(requireActivity()) {
+                time = it
+                binding.timePickerTextView.text = it
+            }
+        }
     }
 }
