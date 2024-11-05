@@ -8,6 +8,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.mercan.roomdatabasemvvm.R
 import com.mercan.roomdatabasemvvm.databinding.FragmentTaskDetailBinding
 import com.mercan.roomdatabasemvvm.utils.pickDate
 import com.mercan.roomdatabasemvvm.utils.pickTime
@@ -60,7 +61,7 @@ class TaskDetailFragment : Fragment() {
     private fun setTextChangedListeners() {
         binding.titleTextInput.addTextChangedListener {
             if (it.toString().trim().isEmpty()) {
-                binding.titleTextInput.error = "Please enter a title"
+                binding.titleTextInput.error = getString(R.string.field_empty_error)
             } else {
                 title = it.toString().trim()
                 binding.titleTextInput.error = null
@@ -89,7 +90,7 @@ class TaskDetailFragment : Fragment() {
                 it.completeTime = if (isCompleted) it.completeTime else null
                 viewModel.update(it)
             }
-            
+
             findNavController().popBackStack()
         }
 

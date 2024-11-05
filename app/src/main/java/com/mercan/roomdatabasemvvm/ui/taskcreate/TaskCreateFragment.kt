@@ -89,7 +89,7 @@ class TaskCreateFragment : Fragment() {
         val time = binding.timePickerTextView.text.toString()
         val deadLine = "$date $time"
 
-        if (title.isEmpty()) {
+        if (title.trim().isEmpty()) {
             binding.taskTitleTextInputLayout.error = getString(R.string.field_empty_error)
             return
         }
