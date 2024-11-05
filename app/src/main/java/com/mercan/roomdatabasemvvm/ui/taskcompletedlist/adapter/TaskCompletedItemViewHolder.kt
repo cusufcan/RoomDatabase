@@ -14,11 +14,16 @@ class TaskCompletedItemViewHolder(
         context: Context,
         task: Task,
         onDeleteClicked: (task: Task) -> Unit,
-        onClick: (id: Int) -> Unit
+        onEditClicked: (id: Int) -> Unit
     ) {
         binding.titleTextView.text = task.title
+
         binding.deleteButton.setOnClickListener {
             onDeleteClicked(task)
+        }
+
+        binding.editButton.setOnClickListener {
+            onEditClicked(task.id)
         }
 
         task.completeTime?.let {
@@ -26,10 +31,6 @@ class TaskCompletedItemViewHolder(
 
             binding.completeTimeTextView.visibility = View.VISIBLE
             binding.completeTimeTextView.text = context.getString(R.string.completed_on, date)
-        }
-
-        binding.root.setOnClickListener {
-            onClick(task.id)
         }
     }
 }
