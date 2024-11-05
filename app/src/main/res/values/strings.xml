@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RoomDatabaseMVVM</string>
+    <string name="app_name">RoomDatabase</string>
 
     <!-- General -->
     <string name="save">Save</string>
