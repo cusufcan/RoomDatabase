@@ -77,60 +77,70 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/dateTimePickerTextView"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/taskDeadLineLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:text="@string/task_deadline"
-        android:textAppearance="?attr/textAppearanceTitleMedium"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/statusCard" />
+        app:layout_constraintTop_toBottomOf="@id/statusCard">
 
-    <LinearLayout
-        android:id="@+id/dateTimePickerLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dateTimePickerTextView">
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/datePickerCardView"
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/dateTimePickerTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:cardCornerRadius="8dp"
-            app:contentPadding="12dp">
+            android:text="@string/task_deadline"
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/datePickerTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textAppearance="?attr/textAppearanceBodyLarge" />
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/timePickerCardView"
+        <LinearLayout
+            android:id="@+id/dateTimePickerLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_weight="1"
-            app:cardCornerRadius="8dp"
-            app:contentPadding="12dp">
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dateTimePickerTextView">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/timePickerTextView"
-                android:layout_width="match_parent"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/datePickerCardView"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textAppearance="?attr/textAppearanceBodyLarge" />
-        </com.google.android.material.card.MaterialCardView>
-    </LinearLayout>
+                android:layout_weight="1"
+                app:cardCornerRadius="8dp"
+                app:contentPadding="12dp">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/datePickerTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textAppearance="?attr/textAppearanceBodyLarge" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/timePickerCardView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="8dp"
+                app:contentPadding="12dp">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/timePickerTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textAppearance="?attr/textAppearanceBodyLarge" />
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/updateButton"
@@ -142,7 +152,7 @@
         app:cornerRadius="8dp"
         app:layout_constraintEnd_toStartOf="@id/deleteButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/dateTimePickerLayout" />
+        app:layout_constraintTop_toBottomOf="@id/taskDeadLineLayout" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/deleteButton"

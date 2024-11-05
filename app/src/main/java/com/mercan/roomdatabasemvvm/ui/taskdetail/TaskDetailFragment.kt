@@ -39,8 +39,13 @@ class TaskDetailFragment : Fragment() {
                 title = it.title
                 description = it.description ?: ""
                 isCompleted = it.isCompleted
-                date = it.deadLine?.split(" ")?.get(0) ?: ""
-                time = it.deadLine?.split(" ")?.get(1) ?: ""
+
+                it.deadLine?.let { deadLine ->
+                    binding.taskDeadLineLayout.visibility = View.VISIBLE
+
+                    date = deadLine.split(" ")[0]
+                    time = deadLine.split(" ")[1]
+                }
 
                 binding.titleTextInput.setText(title)
                 binding.descriptionTextInput.setText(description)
