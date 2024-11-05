@@ -31,7 +31,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/checkbox"
                 app:layout_constraintEnd_toStartOf="@+id/checkbox"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@id/checkbox" />
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/checkbox"

@@ -50,6 +50,14 @@ class TaskCreateFragment : Fragment() {
             }
         }
 
+        binding.checkbox.setOnCheckedChangeListener { _, isChecked ->
+            binding.dateTimePickerLayout.visibility = if (isChecked) {
+                View.VISIBLE
+            } else {
+                View.GONE
+            }
+        }
+
         return binding.root
     }
 
@@ -87,7 +95,12 @@ class TaskCreateFragment : Fragment() {
 
         val date = binding.datePickerTextView.text.toString()
         val time = binding.timePickerTextView.text.toString()
-        val deadLine = "$date $time"
+
+        val deadLine = if (binding.checkbox.isChecked) {
+            "$date $time"
+        } else {
+            null
+        }
 
         if (title.trim().isEmpty()) {
             binding.taskTitleTextInputLayout.error = getString(R.string.field_empty_error)
