@@ -36,7 +36,7 @@ class TaskCreateFragment : Fragment() {
 
         setInitialDateTime()
 
-        binding.saveTaskButton.setOnClickListener(::saveTask)
+        binding.saveTaskButton.setOnClickListener { _ -> saveTask() }
 
         binding.datePickerCardView.setOnClickListener {
             pickDate(requireActivity()) {
@@ -92,7 +92,7 @@ class TaskCreateFragment : Fragment() {
         }
     }
 
-    private fun saveTask(view: View) {
+    private fun saveTask() {
         val title = binding.taskTitleTextInputField.text.toString()
         val description = binding.taskDescriptionTextInputField.text.toString()
 
