@@ -12,6 +12,7 @@ import com.mercan.roomdatabasemvvm.R
 import com.mercan.roomdatabasemvvm.databinding.FragmentTaskDetailBinding
 import com.mercan.roomdatabasemvvm.utils.pickDate
 import com.mercan.roomdatabasemvvm.utils.pickTime
+import com.mercan.roomdatabasemvvm.utils.showDialog
 import com.mercan.roomdatabasemvvm.viewmodel.TaskViewModel
 
 class TaskDetailFragment : Fragment() {
@@ -86,22 +87,33 @@ class TaskDetailFragment : Fragment() {
 
     private fun setButtonOnClicks() {
         binding.updateButton.setOnClickListener {
-            val task = viewModel.task.value
-            task?.let {
-                it.title = title
-                it.description = description
-                it.isCompleted = isCompleted
-                it.deadLine = "$date $time"
-                it.completeTime = if (isCompleted) it.completeTime else null
-                viewModel.update(it)
-            }
-
-            findNavController().popBackStack()
+            showDialog(
+                context = requireActivity(),
+                message = getString(R.string.update_warning),
+                positiveButtonAction = {
+                    val task = viewModel.task.value
+                    task?.let {
+                        it.title = title
+                        it.description = description
+                        it.isCompleted = isCompleted
+                        it.deadLine = if (it.deadLine.isNullOrEmpty()) null else "$date $time"
+                        it.completeTime = if (isCompleted) it.completeTime else null
+                        viewModel.update(it)
+                    }
+                    findNavController().popBackStack()
+                }
+            )
         }
 
         binding.deleteButton.setOnClickListener {
-            viewModel.delete(viewModel.task.value!!)
-            findNavController().popBackStack()
+            showDialog(
+                context = requireActivity(),
+                message = getString(R.string.delete_warning),
+                positiveButtonAction = {
+                    viewModel.delete(viewModel.task.value!!)
+                    findNavController().popBackStack()
+                }
+            )
         }
     }
 

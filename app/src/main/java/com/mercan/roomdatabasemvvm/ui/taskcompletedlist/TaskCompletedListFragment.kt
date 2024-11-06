@@ -8,10 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.mercan.roomdatabasemvvm.R
 import com.mercan.roomdatabasemvvm.data.model.Task
 import com.mercan.roomdatabasemvvm.databinding.FragmentTaskCompletedListBinding
 import com.mercan.roomdatabasemvvm.ui.tablayout.TabLayoutFragmentDirections
 import com.mercan.roomdatabasemvvm.ui.taskcompletedlist.adapter.TaskCompletedListAdapter
+import com.mercan.roomdatabasemvvm.utils.showDialog
 import com.mercan.roomdatabasemvvm.viewmodel.TaskViewModel
 
 class TaskCompletedListFragment : Fragment() {
@@ -40,7 +42,13 @@ class TaskCompletedListFragment : Fragment() {
     }
 
     private fun onDeleteClick(task: Task) {
-        taskViewModel.delete(task)
+        showDialog(
+            context = requireActivity(),
+            message = getString(R.string.delete_warning),
+            positiveButtonAction = {
+                taskViewModel.delete(task)
+            }
+        )
     }
 
     private fun onClick(id: Int) {
