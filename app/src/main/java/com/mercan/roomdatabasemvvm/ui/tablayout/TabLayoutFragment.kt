@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.mercan.roomdatabasemvvm.databinding.FragmentTabLayoutBinding
 import com.mercan.roomdatabasemvvm.ui.tablayout.adapter.TabLayoutAdapter
 
@@ -30,5 +31,14 @@ class TabLayoutFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    fun getFab(): FloatingActionButton {
+        return binding.createTaskFloatingActionButton
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

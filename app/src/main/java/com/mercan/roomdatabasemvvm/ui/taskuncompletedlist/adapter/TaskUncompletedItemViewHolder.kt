@@ -1,17 +1,23 @@
 package com.mercan.roomdatabasemvvm.ui.taskuncompletedlist.adapter
 
+import android.content.Context
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.mercan.roomdatabasemvvm.R
 import com.mercan.roomdatabasemvvm.data.model.Task
 import com.mercan.roomdatabasemvvm.databinding.TaskUncompletedItemBinding
+import com.mercan.roomdatabasemvvm.utils.showSnackbar
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 
 class TaskUncompletedItemViewHolder(
     private val binding: TaskUncompletedItemBinding,
+    private val fabAnchorView: FloatingActionButton?,
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(
+        context: Context,
         task: Task,
         onCheck: (task: Task) -> Unit,
         onClick: (id: Int) -> Unit,
@@ -27,8 +33,24 @@ class TaskUncompletedItemViewHolder(
                 val completeDate = formatter.format(initialDate.time)
                 task.completeTime = completeDate
             }
-            
+
             onCheck(task)
+
+            showSnackbar(
+                view = binding.root,
+                anchorView = fabAnchorView,
+                context = context,
+                message = context.getString(
+                    if (isChecked) R.string.task_completed
+                    else R.string.task_uncompleted
+                ),
+                actionText = context.getString(R.string.undo),
+                action = {
+                    task.isCompleted = false
+                    task.completeTime = ""
+                    onCheck(task)
+                }
+            )
         }
 
         if (task.description.isNullOrEmpty()) {

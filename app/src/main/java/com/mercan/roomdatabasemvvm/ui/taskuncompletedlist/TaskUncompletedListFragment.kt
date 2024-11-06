@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mercan.roomdatabasemvvm.data.model.Task
 import com.mercan.roomdatabasemvvm.databinding.FragmentTaskUncompletedListBinding
+import com.mercan.roomdatabasemvvm.ui.tablayout.TabLayoutFragment
 import com.mercan.roomdatabasemvvm.ui.tablayout.TabLayoutFragmentDirections
 import com.mercan.roomdatabasemvvm.ui.taskuncompletedlist.adapter.TaskUncompletedListAdapter
 import com.mercan.roomdatabasemvvm.viewmodel.TaskViewModel
@@ -29,8 +30,13 @@ class TaskUncompletedListFragment : Fragment() {
 
         binding.taskUncompletedRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
+        val tabLayoutFragment = parentFragment as? TabLayoutFragment
+
+
         taskViewModel.uncompletedTasks.observe(viewLifecycleOwner) { tasks ->
             taskUncompletedListAdapter = TaskUncompletedListAdapter(
+                tabLayoutFragment?.getFab(),
+                requireActivity(),
                 tasks,
                 ::onCheckClick,
                 ::onClick,

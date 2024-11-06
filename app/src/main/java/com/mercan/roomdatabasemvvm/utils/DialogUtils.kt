@@ -1,7 +1,10 @@
 package com.mercan.roomdatabasemvvm.utils
 
 import android.content.Context
+import android.view.View
 import androidx.appcompat.app.AlertDialog
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 import com.mercan.roomdatabasemvvm.R
 
 fun showDialog(
@@ -18,5 +21,21 @@ fun showDialog(
         .setNegativeButton(context.getString(R.string.cancel)) { _, _ ->
             return@setNegativeButton
         }
+        .show()
+}
+
+fun showSnackbar(
+    context: Context,
+    view: View,
+    anchorView: FloatingActionButton? = null,
+    message: String,
+    actionText: String? = null,
+    action: (() -> Unit)? = null,
+    duration: Int = Snackbar.LENGTH_SHORT
+) {
+    println(anchorView)
+    Snackbar.make(context, view, message, duration)
+        .setAction(actionText) { action?.invoke() }
+        .setAnchorView(anchorView)
         .show()
 }

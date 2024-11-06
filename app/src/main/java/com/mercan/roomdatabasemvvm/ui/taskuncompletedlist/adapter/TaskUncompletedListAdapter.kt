@@ -1,12 +1,16 @@
 package com.mercan.roomdatabasemvvm.ui.taskuncompletedlist.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.mercan.roomdatabasemvvm.data.model.Task
 import com.mercan.roomdatabasemvvm.databinding.TaskUncompletedItemBinding
 
 class TaskUncompletedListAdapter(
+    private val fabAnchorView: FloatingActionButton?,
+    private val context: Context,
     private val tasks: List<Task>,
     private val onCheck: (task: Task) -> Unit,
     private val onClick: (id: Int) -> Unit,
@@ -21,11 +25,11 @@ class TaskUncompletedListAdapter(
             false,
         )
 
-        return TaskUncompletedItemViewHolder(binding)
+        return TaskUncompletedItemViewHolder(binding, fabAnchorView)
     }
 
     override fun onBindViewHolder(holder: TaskUncompletedItemViewHolder, position: Int) {
-        holder.bind(tasks[position], onCheck, onClick)
+        holder.bind(context, tasks[position], onCheck, onClick)
     }
 
     override fun getItemCount() = tasks.size
