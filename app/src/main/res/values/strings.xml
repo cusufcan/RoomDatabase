@@ -10,6 +10,8 @@
     <string name="cancel">Cancel</string>
     <string name="warning">Warning</string>
     <string name="undo">Undo</string>
+    <string name="no_uncompleted_tasks">There are no uncompleted tasks</string>
+    <string name="no_completed_tasks">There are no completed tasks</string>
     <string name="field_empty_error">This field cannot be empty</string>
 
     <!-- TaskUncompletedListFragment -->

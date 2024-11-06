@@ -32,8 +32,20 @@ class TaskCompletedListFragment : Fragment() {
         binding.taskCompletedRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         taskViewModel.completedTasks.observe(viewLifecycleOwner) { tasks ->
+            if (tasks.isNullOrEmpty()) {
+                binding.taskCompletedRecyclerView.visibility = View.GONE
+                binding.noTaskTextView.visibility = View.VISIBLE
+                return@observe
+            } else {
+                binding.taskCompletedRecyclerView.visibility = View.VISIBLE
+                binding.noTaskTextView.visibility = View.GONE
+            }
+
             taskCompletedListAdapter = TaskCompletedListAdapter(
-                requireContext(), tasks, ::onDeleteClick, ::onClick
+                requireContext(),
+                tasks,
+                ::onDeleteClick,
+                ::onClick,
             )
             binding.taskCompletedRecyclerView.adapter = taskCompletedListAdapter
         }

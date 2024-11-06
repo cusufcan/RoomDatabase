@@ -23,8 +23,7 @@ class TaskUncompletedListFragment : Fragment() {
     private lateinit var taskUncompletedListAdapter: TaskUncompletedListAdapter
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentTaskUncompletedListBinding.inflate(inflater, container, false)
 
@@ -32,8 +31,16 @@ class TaskUncompletedListFragment : Fragment() {
 
         val tabLayoutFragment = parentFragment as? TabLayoutFragment
 
-
         taskViewModel.uncompletedTasks.observe(viewLifecycleOwner) { tasks ->
+            if (tasks.isNullOrEmpty()) {
+                binding.taskUncompletedRecyclerView.visibility = View.GONE
+                binding.noTaskTextView.visibility = View.VISIBLE
+                return@observe
+            } else {
+                binding.taskUncompletedRecyclerView.visibility = View.VISIBLE
+                binding.noTaskTextView.visibility = View.GONE
+            }
+
             taskUncompletedListAdapter = TaskUncompletedListAdapter(
                 tabLayoutFragment?.getFab(),
                 requireActivity(),
@@ -52,8 +59,7 @@ class TaskUncompletedListFragment : Fragment() {
     }
 
     private fun onClick(id: Int) {
-        val dir = TabLayoutFragmentDirections
-            .actionTabLayoutFragmentToTaskDetailFragment()
+        val dir = TabLayoutFragmentDirections.actionTabLayoutFragmentToTaskDetailFragment()
         dir.id = id
         findNavController().navigate(dir)
     }
