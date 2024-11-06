@@ -41,7 +41,7 @@ class TaskDetailFragment : Fragment() {
                 description = it.description ?: ""
                 isCompleted = it.isCompleted
 
-                it.deadLine?.let { deadLine ->
+                it.deadline?.let { deadLine ->
                     binding.taskDeadLineLayout.visibility = View.VISIBLE
 
                     date = deadLine.split(" ")[0]
@@ -96,7 +96,7 @@ class TaskDetailFragment : Fragment() {
                         it.title = title
                         it.description = description
                         it.isCompleted = isCompleted
-                        it.deadLine = if (it.deadLine.isNullOrEmpty()) null else "$date $time"
+                        it.deadline = if (it.deadline.isNullOrEmpty()) null else "$date $time"
                         it.completeTime = if (isCompleted) it.completeTime else null
                         viewModel.update(it)
                     }

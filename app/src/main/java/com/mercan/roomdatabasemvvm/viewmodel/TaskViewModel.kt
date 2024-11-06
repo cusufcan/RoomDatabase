@@ -20,7 +20,7 @@ class TaskViewModel(application: Application) : AndroidViewModel(application) {
     init {
         val taskDao = TaskDatabase.getDatabase(application).taskDao()
         repository = TaskRepository(taskDao)
-        uncompletedTasks = repository.allTasks
+        uncompletedTasks = repository.uncompletedTasks
         completedTasks = repository.completedTasks
     }
 

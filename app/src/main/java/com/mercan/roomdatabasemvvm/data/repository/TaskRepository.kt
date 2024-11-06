@@ -5,7 +5,7 @@ import com.mercan.roomdatabasemvvm.data.database.TaskDao
 import com.mercan.roomdatabasemvvm.data.model.Task
 
 class TaskRepository(private val taskDao: TaskDao) {
-    val allTasks: LiveData<List<Task>> = taskDao.getTasks(false)
+    val uncompletedTasks: LiveData<List<Task>> = taskDao.getTasks(false)
     val completedTasks: LiveData<List<Task>> = taskDao.getTasks(true)
 
     suspend fun find(id: Int): Task = taskDao.getTaskById(id)
