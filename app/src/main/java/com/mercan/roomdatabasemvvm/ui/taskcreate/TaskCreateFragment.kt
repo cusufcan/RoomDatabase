@@ -99,7 +99,9 @@ class TaskCreateFragment : Fragment() {
         val date = binding.datePickerTextView.text.toString()
         val time = binding.timePickerTextView.text.toString()
 
-        val deadLine = if (binding.checkbox.isChecked) {
+        val hasDeadline = binding.checkbox.isChecked
+
+        val deadLine = if (hasDeadline) {
             "$date $time"
         } else {
             null
@@ -110,7 +112,14 @@ class TaskCreateFragment : Fragment() {
             return
         }
 
-        taskViewModel.insert(Task(title, description, deadLine = deadLine))
+        taskViewModel.insert(
+            Task(
+                title,
+                description,
+                deadline = deadLine,
+                hasDeadline = hasDeadline
+            )
+        )
 
         popBack()
     }

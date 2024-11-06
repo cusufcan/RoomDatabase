@@ -7,7 +7,8 @@ import androidx.room.PrimaryKey
 data class Task(
     var title: String,
     var description: String?,
-    var deadLine: String?,
+    var hasDeadline: Boolean = false,
+    var deadline: String?,
     var isCompleted: Boolean = false,
     var completeTime: String? = null,
 ) {
