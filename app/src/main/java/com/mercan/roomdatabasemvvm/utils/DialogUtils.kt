@@ -33,7 +33,6 @@ fun showSnackbar(
     action: (() -> Unit)? = null,
     duration: Int = Snackbar.LENGTH_SHORT
 ) {
-    println(anchorView)
     Snackbar.make(context, view, message, duration)
         .setAction(actionText) { action?.invoke() }
         .setAnchorView(anchorView)
