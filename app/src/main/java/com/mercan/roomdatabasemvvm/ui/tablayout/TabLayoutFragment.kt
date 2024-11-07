@@ -17,22 +17,24 @@ class TabLayoutFragment : Fragment() {
     private lateinit var tabLayoutAdapter: TabLayoutAdapter
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentTabLayoutBinding.inflate(inflater, container, false)
 
         setTabLayoutAdapter()
-
-        binding.createTaskFloatingActionButton.setOnClickListener {
-            findNavController().navigate(TabLayoutFragmentDirections.actionTabLayoutFragmentToTaskCreateFragment())
-        }
+        setOnClicks()
 
         return binding.root
     }
 
     fun getFab(): FloatingActionButton {
         return binding.createTaskFloatingActionButton
+    }
+
+    private fun setOnClicks() {
+        binding.createTaskFloatingActionButton.setOnClickListener {
+            findNavController().navigate(TabLayoutFragmentDirections.actionTabLayoutFragmentToTaskCreateFragment())
+        }
     }
 
     private fun setTabLayoutAdapter() {
