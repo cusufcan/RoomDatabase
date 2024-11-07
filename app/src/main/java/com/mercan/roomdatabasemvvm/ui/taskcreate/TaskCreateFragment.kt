@@ -33,9 +33,13 @@ class TaskCreateFragment : Fragment() {
 
         checkFields()
         setAutoFocus()
-
         setInitialDateTime()
+        setOnClicks()
 
+        return binding.root
+    }
+
+    private fun setOnClicks() {
         binding.saveTaskButton.setOnClickListener { _ -> saveTask() }
 
         binding.datePickerCardView.setOnClickListener {
@@ -60,8 +64,6 @@ class TaskCreateFragment : Fragment() {
                 View.GONE
             }
         }
-
-        return binding.root
     }
 
     private fun setInitialDateTime() {
