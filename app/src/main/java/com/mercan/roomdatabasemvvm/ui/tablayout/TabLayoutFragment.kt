@@ -22,9 +22,7 @@ class TabLayoutFragment : Fragment() {
     ): View {
         _binding = FragmentTabLayoutBinding.inflate(inflater, container, false)
 
-        binding.tabLayout.setupWithViewPager(binding.viewPager)
-        tabLayoutAdapter = TabLayoutAdapter(childFragmentManager, requireActivity())
-        binding.viewPager.adapter = tabLayoutAdapter
+        setTabLayoutAdapter()
 
         binding.createTaskFloatingActionButton.setOnClickListener {
             findNavController().navigate(TabLayoutFragmentDirections.actionTabLayoutFragmentToTaskCreateFragment())
@@ -35,6 +33,12 @@ class TabLayoutFragment : Fragment() {
 
     fun getFab(): FloatingActionButton {
         return binding.createTaskFloatingActionButton
+    }
+
+    private fun setTabLayoutAdapter() {
+        binding.tabLayout.setupWithViewPager(binding.viewPager)
+        tabLayoutAdapter = TabLayoutAdapter(childFragmentManager, requireActivity())
+        binding.viewPager.adapter = tabLayoutAdapter
     }
 
     override fun onDestroyView() {
