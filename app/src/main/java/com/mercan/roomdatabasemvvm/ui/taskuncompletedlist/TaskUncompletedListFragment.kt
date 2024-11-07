@@ -27,6 +27,12 @@ class TaskUncompletedListFragment : Fragment() {
     ): View {
         _binding = FragmentTaskUncompletedListBinding.inflate(inflater, container, false)
 
+        setObservers()
+
+        return binding.root
+    }
+
+    private fun setObservers() {
         binding.taskUncompletedRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         val tabLayoutFragment = parentFragment as? TabLayoutFragment
@@ -50,8 +56,6 @@ class TaskUncompletedListFragment : Fragment() {
             )
             binding.taskUncompletedRecyclerView.adapter = taskUncompletedListAdapter
         }
-
-        return binding.root
     }
 
     private fun onCheckClick(task: Task) {
