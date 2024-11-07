@@ -32,8 +32,17 @@ class TaskDetailFragment : Fragment() {
     ): View {
         _binding = FragmentTaskDetailBinding.inflate(inflater, container, false)
 
-        val args = TaskDetailFragmentArgs.fromBundle(requireArguments())
+        setObservers()
+        setTextChangedListeners()
+        setCheckedChangeListeners()
+        setButtonOnClicks()
+        setDateTimePickerOnClicks()
 
+        return binding.root
+    }
+
+    private fun setObservers() {
+        val args = TaskDetailFragmentArgs.fromBundle(requireArguments())
         viewModel.find(args.id)
         viewModel.task.observe(viewLifecycleOwner) { task ->
             task?.let {
@@ -55,13 +64,6 @@ class TaskDetailFragment : Fragment() {
                 binding.timePickerTextView.text = time
             }
         }
-
-        setTextChangedListeners()
-        setCheckedChangeListeners()
-        setButtonOnClicks()
-        setDateTimePickerOnClicks()
-
-        return binding.root
     }
 
     private fun setTextChangedListeners() {
