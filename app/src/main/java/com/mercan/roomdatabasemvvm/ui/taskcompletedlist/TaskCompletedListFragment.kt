@@ -29,6 +29,12 @@ class TaskCompletedListFragment : Fragment() {
     ): View {
         _binding = FragmentTaskCompletedListBinding.inflate(inflater, container, false)
 
+        setObservers()
+
+        return binding.root
+    }
+
+    private fun setObservers() {
         binding.taskCompletedRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         taskViewModel.completedTasks.observe(viewLifecycleOwner) { tasks ->
@@ -49,8 +55,6 @@ class TaskCompletedListFragment : Fragment() {
             )
             binding.taskCompletedRecyclerView.adapter = taskCompletedListAdapter
         }
-
-        return binding.root
     }
 
     private fun onDeleteClick(task: Task) {
